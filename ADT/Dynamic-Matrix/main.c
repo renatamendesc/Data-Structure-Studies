@@ -14,7 +14,7 @@ int main (void) {
         }
     }
 
-    printf("%d rows\n%d columns\n\n", getRows(A), getColumns(A));
+    printf("%d rows\n%d columns\n\n", get_rows(A), get_columns(A));
 
     int value;
 
