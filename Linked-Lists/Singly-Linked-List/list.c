@@ -124,7 +124,7 @@ void list_print (Node * head, char * message)  {
 
 int list_remove (Node ** head, int info) { 
 
-    Node * preview = NULL;
+    Node * previous = NULL;
     Node * element = * head; 
 
     int found = 0;
@@ -137,13 +137,13 @@ int list_remove (Node ** head, int info) {
             break;
         }
 
-        preview = element; 
+        previous = element; 
         element = element->next; 
     }
 
     if (found) { 
 
-        if (preview == NULL) { 
+        if (previous == NULL) { 
             
             * head = element->next;
             free (element);
@@ -151,7 +151,7 @@ int list_remove (Node ** head, int info) {
             return 1;
         }
 
-        preview->next = element->next; 
+        previous->next = element->next; 
         free (element);
 
         return 1;
@@ -168,23 +168,23 @@ int list_insert_sorted (Node ** head, int info) {
 
     if (new) {
 
-        Node * preview = NULL;
+        Node * previous = NULL;
         Node * element = * head;
 
         while (element != NULL && element->info < info) { 
-            preview = element;
+            previous = element;
             element = element->next;
         }
 
-        if (preview == NULL) { 
+        if (previous == NULL) { 
             new->next = * head;
             * head = new;
             
             return 1;
         }
 
-        new->next = preview->next;
-        preview->next = new;
+        new->next = previous->next;
+        previous->next = new;
 
         return 1;
     }
@@ -200,27 +200,27 @@ int list_insert_index (Node ** head, int index, int info) {
 
     if (new) {
 
-        Node * preview = NULL;
+        Node * previous = NULL;
         Node * element = * head;
 
         for (int i = 0; i < index; i++) {
 
             if (element != NULL) {
-                preview = element;
+                previous = element;
                 element = element->next;
             }
 
         }
 
-        if (preview == NULL) { 
+        if (previous == NULL) { 
             new->next = * head;
             * head = new;
             
             return 1;
         }
 
-        new->next = preview->next;
-        preview->next = new;
+        new->next = previous->next;
+        previous->next = new;
 
         return 1;
     }
@@ -231,19 +231,19 @@ int list_insert_index (Node ** head, int index, int info) {
 
 int list_remove_index (Node ** head, int index) {
 
-    Node * preview = NULL;
+    Node * previous = NULL;
     Node * element = * head;
 
     for (int i = 0; i < index; i++) {
 
         if (element != NULL) {
-            preview = element;
+            previous = element;
             element = element->next;
         }
 
     }
 
-    if (preview == NULL) { 
+    if (previous == NULL) { 
         
         * head = element->next;
         free (element);
@@ -251,7 +251,7 @@ int list_remove_index (Node ** head, int index) {
         return 1;
     }
 
-    preview->next = element->next; 
+    previous->next = element->next; 
     free (element);
 
     return 1;
