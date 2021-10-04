@@ -11,7 +11,7 @@ struct node {
 
 Node * list_create_node (int info) {
 
-    Node * node = (Node *) malloc (sizeof (Node));
+    Node * node = (Node *) malloc(sizeof(Node));
 
     if (node) {
         node->info = info;
