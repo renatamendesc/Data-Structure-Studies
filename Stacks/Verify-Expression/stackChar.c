@@ -1,15 +1,15 @@
-#include "stack.h"
+#include "stackChar.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 struct stack {
 
-    int info;
+    char info;
     struct stack * next;
 
 };
 
-Stack * create_element (int info) {
+Stack * create_element (char info) {
 
     Stack * stack = (Stack *) malloc(sizeof(Stack));
 
@@ -21,7 +21,7 @@ Stack * create_element (int info) {
     return stack;
 }
 
-int push_stack (Stack ** head, int info) {
+int push_stack (Stack ** head, char info) {
 
     Stack * new = create_element(info);
 
@@ -59,7 +59,7 @@ int pop_stack (Stack ** head) {
         element = element->next; 
     }
 
-    int value = element->info;
+    char value = element->info;
 
     if (size_stack(* head) > 1) {
         previous->next = element->next;
@@ -108,4 +108,3 @@ void free_stack (Stack ** head) {
         * head = NULL;
     }
 }
-
