@@ -18,10 +18,10 @@ int main (void) {
     push_stack(&stack, 12);
     push_stack(&stack, 22);
 
-    printf("Value: %d\n", pop_stack(&stack));
-    printf("Value: %d\n", pop_stack(&stack));
-    printf("Value: %d\n", pop_stack(&stack));
-    printf("Value: %d\n", pop_stack(&stack));
+    printf("Value: %.1f\n", pop_stack(&stack));
+    printf("Value: %.1f\n", pop_stack(&stack));
+    printf("Value: %.1f\n", pop_stack(&stack));
+    printf("Value: %.1f\n", pop_stack(&stack));
 
     printf("\nTamanho da lista: %d\n\n", size_stack(stack));
 

@@ -4,12 +4,12 @@
 
 struct stack {
 
-    int info;
+    float info;
     struct stack * next;
 
 };
 
-Stack * create_element (int info) {
+Stack * create_element (float info) {
 
     Stack * stack = (Stack *) malloc(sizeof(Stack));
 
@@ -21,7 +21,7 @@ Stack * create_element (int info) {
     return stack;
 }
 
-int push_stack (Stack ** head, int info) {
+int push_stack (Stack ** head, float info) {
 
     Stack * new = create_element(info);
 
@@ -49,7 +49,7 @@ int push_stack (Stack ** head, int info) {
     return 0;
 }
 
-int pop_stack (Stack ** head) {
+float pop_stack (Stack ** head) {
 
     Stack * previous = NULL;
     Stack * element = * head;
@@ -59,7 +59,7 @@ int pop_stack (Stack ** head) {
         element = element->next; 
     }
 
-    int value = element->info;
+    float value = element->info;
 
     if (size_stack(* head) > 1) {
         previous->next = element->next;
