@@ -12,6 +12,8 @@ int main (void) {
     printf("Tree nodes: ");
     tree_print(tree);
 
+    printf("Depth: %d\n", tree_depth(tree));
+
     tree_free(tree);
 
     return 0;

@@ -44,7 +44,6 @@ static void deletes (TreeNode * node) {
         deletes(node->left);
         deletes(node->right);
         free(node);
-
     }
 }
 
@@ -52,7 +51,6 @@ void tree_free (Tree * tree) {
 
     deletes(tree->root);
     free(tree);
-
 }
 
 /*************** FREE FUNCTIONS ***************/
@@ -86,16 +84,29 @@ static int belong (TreeNode * node, char info) {
 
     if (node == NULL) return 0;
     else if (node->info == info || belong(node->left, info) || belong(node->right, info)) return 1;
-
 }
 
 int tree_belong (Tree * tree, char info) {
 
     return belong(tree->root, info);
-
 }
 
 /*************** BELONG FUNCTIONS ***************/
+
+/*************** DEPTH FUNCTIONS ***************/
+
+static int depth (TreeNode * node) {
+
+    if (node == NULL) return -1;
+    else return 1 + ((depth(node->left) > depth(node->right)) ? depth(node->left) : depth(node->right));
+}
+
+int tree_depth (Tree * tree) {
+    
+    return depth(tree->root);
+}
+
+/*************** DEPTH FUNCTIONS ***************/
 
 // TreeNode * tree_search (Tree * tree, char info) {
 
