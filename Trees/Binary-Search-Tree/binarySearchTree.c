@@ -82,7 +82,7 @@ static TreeNode * erase (TreeNode * node, int info) {
             node = node->right;
             free(deleted);
 
-        } else if (node->left == NULL) {
+        } else if (node->right == NULL) {
 
             TreeNode * deleted = node;
             node = node->left;
@@ -90,14 +90,13 @@ static TreeNode * erase (TreeNode * node, int info) {
 
         } else {
 
-            // NAO SEI SE ESSA PARTE TA CERTA 
-            TreeNode * successor = node->right;
+            TreeNode * successor = node->left;
 
-            while (successor->left != NULL) successor = successor->left;
+            while (successor->right != NULL) successor = successor->right;
 
             node->info = successor->info;
             successor->info = info;
-            node->right = erase(node->left, info); 
+            node->left = erase(node->left, info); 
         }
     }
 
@@ -137,7 +136,7 @@ static void print (TreeNode * node) {
 
     if (node != NULL) {
 
-        printf("%c ", node->info);
+        printf("%d ", node->info);
 
         print(node->left);
         print(node->right);
@@ -174,16 +173,16 @@ TreeNode * tree_search (Tree * tree, int info) {
 
 /*************** BELONG FUNCTIONS ***************/
 
-// static int belong (TreeNode * node, int info) {
+static int belong (TreeNode * node, int info) {
 
-//     if (node == NULL) return 0;
-//     else if (node->info == info || belong(node->left, info) || belong(node->right, info)) return 1;
-// }
+    if (node == NULL) return 0;
+    else if (node->info == info || belong(node->left, info) || belong(node->right, info)) return 1;
+}
 
-// int tree_belong (Tree * tree, int info) {
+int tree_belong (Tree * tree, int info) {
 
-//     return belong(tree->root, info);
-// }
+    return belong(tree->root, info);
+}
 
 /*************** BELONG FUNCTIONS ***************/
 
@@ -201,7 +200,3 @@ int tree_depth (Tree * tree) {
 }
 
 /*************** DEPTH FUNCTIONS ***************/
-
-// TreeNode * tree_search (Tree * tree, char info) {
-
-// }

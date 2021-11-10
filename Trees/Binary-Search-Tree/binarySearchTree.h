@@ -12,7 +12,8 @@ void tree_erase (Tree * tree, int info);
 void tree_free (Tree * tree);
 void tree_print (Tree * tree);
 int tree_depth (Tree * tree);
-// int tree_belong (Tree * tree, int info);
+
+int tree_belong (Tree * tree, int info);
 
 TreeNode * tree_search (Tree * tree, int info);
 
